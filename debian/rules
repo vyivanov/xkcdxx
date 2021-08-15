@@ -1,0 +1,13 @@
+#!/usr/bin/make -f
+
+# export DH_VERBOSE=1
+
+%:
+	dh $@ --builddirectory=debuild/ --buildsystem=cmake
+
+override_dh_auto_configure:
+	install --directory debuild/ && \
+	cd debuild/ && cmake .. -GNinja -DCMAKE_BUILD_TYPE=Release
+
+override_dh_auto_build:
+	cd debuild/ && ninja

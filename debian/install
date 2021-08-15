@@ -1,0 +1,4 @@
+debuild/libxkcdxx.a  /usr/lib/
+debuild/libxkcdxx.so /usr/lib/
+inc/xkcd.h           /usr/include/
+inc/xkcdxx.h         /usr/include/

@@ -3,7 +3,7 @@ Maintainer: Vladimir Yu. Ivanov <inbox@vova-ivanov.info>
 Section: libdevel
 Priority: optional
 Build-Depends:
-    debhelper-compat (=12),
+    debhelper,
     cmake,
     ninja-build,
     libssl-dev,

@@ -22,24 +22,40 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+declare -A MAP=(
+    [bionic]=ubuntu18.04 [focal]=ubuntu20.04)
+
 readonly TAG=$(git describe --tags --abbrev=0 | tr -d '\n')
 readonly MSG=$(git log --pretty=format:"%s" -1)
 
 if [ -z "${TAG}" ] || [ -z "${MSG}" ]; then
-    echo 'check git tag ang git msg'
-    exit 1
+    echo 'check git tag and git msg';
+    exit 1;
 fi
 
-readonly ACTION=${1}
+readonly DIST=${1}
+readonly ACTION=${2}
+
+if [ -z "${DIST}" ]; then
+    echo 'specify distribution';
+    exit 2;
+fi
+
+readonly VER=${MAP[${DIST}]}
+
+if [ -z "${VER}" ]; then
+    echo 'check distribution';
+    exit 3;
+fi
 
 DEBFULLNAME="Vladimir Yu. Ivanov" \
 DEBEMAIL="inbox@vova-ivanov.info" \
-    dch "${MSG}" --create --package=xkcdxx --newversion="${TAG}~ubuntu20.04" --distribution=focal \
+    dch "${MSG}" --create --package=xkcdxx --newversion="${TAG}~${VER}" --distribution="${DIST}" \
  && if [ "${ACTION}" == 'publish' ]; then \
         debuild -S && \
-        dput ppa:vyivanov/xkcdxx "../xkcdxx_${TAG}~ubuntu20.04_source.changes"; \
+        dput ppa:vyivanov/xkcdxx "../xkcdxx_${TAG}~${VER}_source.changes"; \
     else \
-        debuild; \
+        debuild -uc -us; \
     fi \
  && debuild -- clean
 

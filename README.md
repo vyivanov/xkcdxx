@@ -22,9 +22,12 @@ Implemented interfaces:
 - modern C++
 - maybe fast Python-binding also will be added
 
-Pre-built packages:
+Available pre-built packages:
 
-- Ubuntu 20.04 LTS (Focal Fossa)
+| Distribution     | Architecture  |
+|------------------|---------------|
+| Ubuntu 18.04 LTS | amd64         |
+| Ubuntu 20.04 LTS | amd64         |
 
 How to install package from PPA:
 

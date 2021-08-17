@@ -22,8 +22,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-declare -A MAP=(
-    [bionic]=ubuntu18.04 [focal]=ubuntu20.04)
+declare -A MAP=([bionic]=ubuntu18.04
+                [focal]=ubuntu20.04
+                [buster]=debian10.0
+                [bullseye]=debian11.0)
 
 readonly TAG=$(git describe --tags --abbrev=0 | tr -d '\n')
 readonly MSG=$(git log --pretty=format:"%s" -1)

@@ -14,7 +14,7 @@ Do you remember? [Live][2] example. The work was inspired by existing [Python][3
 
 ## Description
 
-Provided both static and shared library variants. There are no specific external dependencies except stuff in standards and popular [OpenSSL][4] library.
+Provided both static and shared library variants. There are no specific external dependencies except stuff in standards and popular [OpenSSL][4] (>=1.1.1) library.
 
 Implemented interfaces:
 
@@ -26,6 +26,8 @@ Available pre-built packages:
 
 | Distribution     | Architecture  |
 |------------------|---------------|
+| Debian 9.0       | amd64         |
+| Debian 10.0      | amd64         |
 | Ubuntu 18.04 LTS | amd64         |
 | Ubuntu 20.04 LTS | amd64         |
 

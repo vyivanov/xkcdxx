@@ -26,8 +26,6 @@ Available pre-built packages:
 
 | Distribution     | Architecture  |
 |------------------|---------------|
-| Debian 9.0       | amd64         |
-| Debian 10.0      | amd64         |
 | Ubuntu 18.04 LTS | amd64         |
 | Ubuntu 20.04 LTS | amd64         |
 

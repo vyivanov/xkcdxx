@@ -11,7 +11,7 @@ int main() {
         std::cout << (a.url()    == b.url())    << '\x20' << a.url()    << '\n';
         std::cout << (a.title()  == b.title())  << '\x20' << a.title()  << '\n';
         std::cout << (a.alt()    == b.alt())    << '\x20' << a.alt()    << '\n';
-    } catch (const xkcdxx::Comic::request_failed& ex) {
+    } catch (const xkcdxx::Comic::RequestFailed& ex) {
         std::cout << ex.what() << '\n';
     }
 }

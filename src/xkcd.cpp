@@ -32,6 +32,8 @@ SOFTWARE.
 #include <string>
 #include <memory>
 
+constexpr xkcd_comic XKCD_COMIC_NULL = static_cast<xkcd_comic>(0);
+
 namespace {
 
 thread_local std::string latest_error = {};
@@ -48,7 +50,7 @@ xkcd_comic comic(const T number) noexcept {
         const auto ptr = std::make_unique<xkcdxx::Comic>(number).release();
         const auto idx = ::to<xkcd_comic>(ptr);
         ret = idx;
-    } catch (const xkcdxx::Comic::request_failed& ex) {
+    } catch (const xkcdxx::Comic::RequestFailed& ex) {
         ::latest_error = ex.what();
     }
     return ret;

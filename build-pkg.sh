@@ -52,8 +52,7 @@ DEBFULLNAME="Vladimir Yu. Ivanov" \
 DEBEMAIL="inbox@vova-ivanov.info" \
     dch "${MSG}" --create --package=xkcdxx --newversion="${TAG}~${VER}" --distribution="${DIST}" \
  && if [ "${ACTION}" == 'publish' ]; then \
-        debuild -S && \
-        dput ppa:vyivanov/xkcdxx "../xkcdxx_${TAG}~${VER}_source.changes"; \
+        debuild -S && dput ppa:vyivanov/xkcdxx "../xkcdxx_${TAG}~${VER}_source.changes"; \
     else \
         debuild -uc -us; \
     fi \

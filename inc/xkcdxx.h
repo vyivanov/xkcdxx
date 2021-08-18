@@ -43,8 +43,8 @@ public:
     enum class Number {
         Latest, Random
     };
-    struct request_failed final: std::runtime_error {
-        explicit request_failed(const std::string& why) noexcept;
+    struct RequestFailed final: std::runtime_error {
+        explicit RequestFailed(const std::string& why) noexcept;
     };
     explicit Comic(Comic::Number number);
     explicit Comic(std::uint32_t number);

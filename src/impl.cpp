@@ -94,12 +94,12 @@ Comic::Impl::Info Comic::Impl::do_request(const std::string& resource) {
     } else {
         if (response) {
             const auto why = std::string{"xkcd.com returned:\x20"} + httplib::detail::status_message(response->status);
-            throw Comic::request_failed(why);
+            throw Comic::RequestFailed(why);
         } else {
             std::stringstream ss{};
             ss << response.error();
             const auto why = std::string{"network error:\x20"} + ss.str();
-            throw Comic::request_failed(why);
+            throw Comic::RequestFailed(why);
         }
     }
 }

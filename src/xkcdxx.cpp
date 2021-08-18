@@ -35,7 +35,7 @@ SOFTWARE.
 
 namespace xkcdxx {
 
-Comic::request_failed::request_failed(const std::string& why) noexcept
+Comic::RequestFailed::RequestFailed(const std::string& why) noexcept
     : std::runtime_error(why) {
 }
 

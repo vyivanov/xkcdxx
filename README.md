@@ -1,6 +1,6 @@
 # xkcdxx
 
-This library could be used to bring funny [xkcd][1] web-comics to your C and C++ applications.
+This library could be used to bring funny [xkcd][1] web-comics to your applications.
 
 Like this:
 
@@ -14,26 +14,72 @@ Do you remember? [Live][2] example. The work was inspired by existing [Python][3
 
 ## Description
 
-Provided both static and shared library variants. There are no specific external dependencies except stuff in standards and popular [OpenSSL][4] (>=1.1.1) library.
+There are no specific external dependencies except stuff in standards and popular [OpenSSL][4] (>=1.1.1).
+Implemented both static and shared thread-safe libraries.
 
-Implemented interfaces:
+Supported interfaces:
 
-- plain C
-- modern C++
-- maybe fast Python-binding also will be added
+- Plain C
+- Modern C++
+- Python-3 binding
 
-Available pre-built packages:
+Pre-built packages:
 
-| Distribution     | Architecture  |
-|------------------|---------------|
-| Ubuntu 18.04 LTS | amd64         |
-| Ubuntu 20.04 LTS | amd64         |
+- Ubuntu 18.04 LTS, amd64
+- Ubuntu 20.04 LTS, amd64
 
-How to install package from PPA:
+[4]: https://www.openssl.org/
+
+## Installation guide
+
+Binary packages are available from Canonical PPA:
 
 ```bash
 $ sudo add-apt-repository --yes --update ppa:vyivanov/xkcdxx
 $ sudo apt install --yes xkcdxx
 ```
 
-[4]: https://www.openssl.org/
+## Usage examples
+
+- **Plain C** &ndash; [complete interface](inc/xkcd.h)
+
+```C
+#include <xkcd.h>
+#include <stdio.h>
+
+xkcd_comic idx = xkcd_comic_latest();
+if (idx) {
+    xkcd_info info = xkcd_comic_info(idx);
+    printf("%s", info.url);
+    xkcd_comic_destroy(idx);
+    idx = XKCD_COMIC_NULL;
+} else {
+    printf("%s", xkcd_comic_error());
+}
+```
+
+- **Modern C++** &ndash; [complete interface](inc/xkcdxx.h)
+
+```C++
+#include <xkcdxx.h>
+#include <iostream>
+
+try {
+    xkcdxx::Comic comic{xkcdxx::Comic::Number::Latest};
+    std::cout << comic.url();
+} catch (xkcdxx::Comic::RequestFailed& ex) {
+    std::cout << ex.what();
+}
+```
+
+- **Python-3 binding** &ndash; [complete interface](python/xkcdxx.py)
+
+```Python
+import xkcdxx
+
+try:
+    comic = xkcdxx.Comic(xkcdxx.Comic.LATEST)
+    print(comic.url())
+except xkcdxx.Comic.RequestFailed as ex:
+    print(ex)
+```

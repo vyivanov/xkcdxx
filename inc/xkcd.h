@@ -43,7 +43,7 @@ API_XKCD xkcd_comic xkcd_comic_latest(void);
 API_XKCD xkcd_comic xkcd_comic_random(void);
 API_XKCD xkcd_comic xkcd_comic_exact(uint32_t number);
 
-static const xkcd_comic XKCD_COMIC_NULL = (xkcd_comic) 0;
+API_XKCD extern const xkcd_comic XKCD_COMIC_NULL;
 
 API_XKCD const char* xkcd_comic_error(void);
 

@@ -6,7 +6,7 @@ Build-Depends:
     debhelper,
     cmake,
     ninja-build,
-    libssl-dev,
+    libssl-dev (>= 1.1.1),
 Standards-Version: 4.4.1
 Homepage: https://github.com/vyivanov/xkcdxx
 
@@ -15,6 +15,6 @@ Architecture: any
 Depends:
     ${shlibs:Depends},
     ${misc:Depends},
-    libssl-dev,
+    libssl-dev (>= 1.1.1),
 Description: library for retrieving xkcd web-comics with C and C++ interfaces.
  Inspired by Python package: https://pypi.org/project/xkcd/.

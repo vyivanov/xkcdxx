@@ -20,7 +20,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-
 import ctypes
 
 
@@ -39,6 +38,7 @@ class _xkcd_info(ctypes.Structure):
 
 
 _DSO = ctypes.cdll.LoadLibrary("/usr/lib/libxkcdxx.so")
+
 _xkcd_comic = ctypes.POINTER(_opaque_struct)
 
 _DSO.xkcd_comic_latest.argtypes  = None
@@ -54,17 +54,17 @@ _DSO.xkcd_comic_info.restype     = _xkcd_info
 _DSO.xkcd_comic_destroy.argtypes = [_xkcd_comic]
 _DSO.xkcd_comic_destroy.restype  = None
 
-_xkcd_comic_latest  = _DSO.xkcd_comic_latest
-_xkcd_comic_random  = _DSO.xkcd_comic_random
-_xkcd_comic_exact   = _DSO.xkcd_comic_exact
-_xkcd_comic_error   = _DSO.xkcd_comic_error
-_xkcd_comic_info    = _DSO.xkcd_comic_info
-_xkcd_comic_destroy = _DSO.xkcd_comic_destroy
+xkcd_comic_latest  = _DSO.xkcd_comic_latest
+xkcd_comic_random  = _DSO.xkcd_comic_random
+xkcd_comic_exact   = _DSO.xkcd_comic_exact
+xkcd_comic_error   = _DSO.xkcd_comic_error
+xkcd_comic_info    = _DSO.xkcd_comic_info
+xkcd_comic_destroy = _DSO.xkcd_comic_destroy
 
 
 class Comic():
-    LATEST = 1,
-    RANDOM = 2,
+    LATEST = 1
+    RANDOM = 2
 
     class RequestFailed(RuntimeError):
         def __init__(self, why):
@@ -73,21 +73,21 @@ class Comic():
     def __init__(self, number):
         self.__idx = Comic.__get_comic(number)
         if not self.__idx:
-            why = _xkcd_comic_error()
+            why = xkcd_comic_error()
             raise Comic.RequestFailed(why)
-        self.__info = _xkcd_comic_info(self.__idx)
+        self.__info = xkcd_comic_info(self.__idx)
 
     def __del__(self):
-        _xkcd_comic_destroy(self.__idx)
+        xkcd_comic_destroy(self.__idx)
         self.__idx = 0
 
     def __get_comic(number):
         if number is Comic.LATEST:
-            return _xkcd_comic_latest()
+            return xkcd_comic_latest()
         elif number is Comic.RANDOM:
-            return _xkcd_comic_random()
+            return xkcd_comic_random()
         else:
-            return _xkcd_comic_exact(number)
+            return xkcd_comic_exact(number)
 
     def number(self):
         return self.__info.number

@@ -1,0 +1,18 @@
+Source: python3-xkcdxx
+Maintainer: Vladimir Yu. Ivanov <inbox@vova-ivanov.info>
+Section: libdevel
+Priority: optional
+Build-Depends:
+    debhelper,
+    dh-python,
+    python3,
+Standards-Version: 4.4.1
+Homepage: https://github.com/vyivanov/xkcdxx
+
+Package: python3-xkcdxx
+Architecture: all
+Depends:
+    ${python3:Depends},
+    ${misc:Depends},
+    xkcdxx (=${binary:Version}),
+Description: Python3-wrapper for xkcdxx library.

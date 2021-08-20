@@ -14,7 +14,7 @@ Do you remember? [Live][2] example. The work was inspired by existing [Python][3
 
 ## Description
 
-There are no specific external dependencies except stuff in standards and popular [OpenSSL][4] (>=1.1.1).
+There are no specific external dependencies except stuff in standards and popular [OpenSSL][4] (>= 1.1.1).
 Implemented both static and shared thread-safe libraries.
 
 Supported interfaces:
@@ -36,12 +36,12 @@ Binary packages are available from Canonical PPA:
 
 ```bash
 $ sudo add-apt-repository --yes --update ppa:vyivanov/xkcdxx
-$ sudo apt install --yes xkcdxx
+$ sudo apt install --yes xkcdxx python3-xkcdxx
 ```
 
 ## Usage examples
 
-- **Plain C** &ndash; [complete interface](inc/xkcd.h)
+- **Plain C** &ndash; [complete interface](binary/inc/xkcd.h)
 
 ```C
 #include <xkcd.h>
@@ -58,7 +58,7 @@ if (idx) {
 }
 ```
 
-- **Modern C++** &ndash; [complete interface](inc/xkcdxx.h)
+- **Modern C++** &ndash; [complete interface](binary/inc/xkcdxx.h)
 
 ```C++
 #include <xkcdxx.h>
@@ -72,7 +72,7 @@ try {
 }
 ```
 
-- **Python-3 binding** &ndash; [complete interface](python/xkcdxx.py)
+- **Python-3 binding** &ndash; [complete interface](python/xkcdxx/__init__.py)
 
 ```Python
 import xkcdxx

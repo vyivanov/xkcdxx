@@ -54,7 +54,7 @@ for idx in "${!PKGS[@]}"; do
     DEBEMAIL='inbox@vova-ivanov.info' \
     dch "${MSG}" --create --package="${PKGS[${idx}]}" --newversion="${VER}~${CODE}" --distribution="${DIST}" \
  && if [ "${ACTION}" == 'publish' ]; then \
-        debuild -S && dput ppa:vyivanov/xkcdxx "../xkcdxx_${VER}~${CODE}_source.changes"; \
+        debuild -S && dput ppa:vyivanov/xkcdxx "../${PKGS[${idx}]}_${VER}~${CODE}_source.changes"; \
     else \
         debuild -uc -us; \
     fi \

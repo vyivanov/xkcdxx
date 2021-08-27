@@ -69,4 +69,4 @@ const std::string& Comic::alt() const noexcept {
     return m_pimpl->alt();
 }
 
-};
+}

@@ -56,7 +56,7 @@ xkcd_comic comic(const T number) noexcept {
     return ret;
 }
 
-};
+}
 
 xkcd_comic xkcd_comic_latest(void) {
     return ::comic(xkcdxx::Comic::Number::Latest);

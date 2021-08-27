@@ -63,4 +63,4 @@ private:
     const Impl::Info m_info;
 };
 
-};
+}

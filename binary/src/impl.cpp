@@ -104,4 +104,4 @@ Comic::Impl::Info Comic::Impl::do_request(const std::string& resource) {
     }
 }
 
-};
+}

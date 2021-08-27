@@ -60,4 +60,4 @@ private:
     const std::shared_ptr<const Comic::Impl> m_pimpl;
 };
 
-};
+}

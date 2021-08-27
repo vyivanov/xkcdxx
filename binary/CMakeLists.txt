@@ -21,19 +21,23 @@
 # SOFTWARE.
 
 cmake_minimum_required(VERSION 3.0.0)
-project(xkcdxx)
+project(xkcdxx LANGUAGES CXX C)
 
-add_library(objlib OBJECT
-    src/xkcd.cpp
-    src/xkcdxx.cpp
-    src/impl.cpp)
+execute_process(COMMAND bash -c "git describe --tags --abbrev=0 | tr -d '\n'" OUTPUT_VARIABLE LIB_SEMVER)
+string(REPLACE "." ";" LIB_SEMVER_LIST ${LIB_SEMVER})
+list(GET LIB_SEMVER_LIST 0 LIB_SEMVER_MAJOR)
+list(GET LIB_SEMVER_LIST 1 LIB_SEMVER_MINOR)
+list(GET LIB_SEMVER_LIST 2 LIB_SEMVER_PATCH)
 
-target_compile_options(objlib PRIVATE -Wall -Wextra -std=c++17 -fvisibility=hidden)
+add_library(objlib OBJECT src/xkcd.cpp src/xkcdxx.cpp src/impl.cpp)
+target_compile_options(objlib PRIVATE -Wall -Wextra -Ofast -std=gnu++17 -fvisibility=hidden)
 target_include_directories(objlib PRIVATE inc/)
 
 add_library(libshared SHARED $<TARGET_OBJECTS:objlib>)
 set_target_properties(libshared PROPERTIES OUTPUT_NAME xkcdxx)
 set_target_properties(objlib PROPERTIES POSITION_INDEPENDENT_CODE ON)
+set_target_properties(libshared PROPERTIES VERSION ${LIB_SEMVER} SOVERSION ${LIB_SEMVER_MAJOR})
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
 target_link_libraries(libshared PRIVATE ssl crypto)
 
 add_library(libstatic STATIC $<TARGET_OBJECTS:objlib>)
@@ -49,3 +53,6 @@ add_executable(xkcd_testxx test/test.cpp)
 target_compile_options(xkcd_testxx PRIVATE -Wall -Wextra -std=c++17)
 target_include_directories(xkcd_testxx PRIVATE inc/)
 target_link_libraries(xkcd_testxx PRIVATE libshared)
+
+install(TARGETS libshared libstatic LIBRARY DESTINATION lib/ ARCHIVE DESTINATION lib/)
+install(FILES inc/xkcd.h inc/xkcdxx.h DESTINATION include/)

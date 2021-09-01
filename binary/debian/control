@@ -4,7 +4,6 @@ Section: libdevel
 Priority: optional
 Build-Depends:
     debhelper,
-    git,
     cmake,
     libssl-dev (>= 1.1.1),
 Standards-Version: 4.4.1

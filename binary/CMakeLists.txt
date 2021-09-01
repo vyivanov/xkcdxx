@@ -20,10 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.10.0)
 project(xkcdxx LANGUAGES CXX C)
 
-execute_process(COMMAND bash -c "git describe --tags --abbrev=0 | tr -d '\n'" OUTPUT_VARIABLE LIB_SEMVER)
+file(READ "VERSION" LIB_SEMVER)
 string(REPLACE "." ";" LIB_SEMVER_LIST ${LIB_SEMVER})
 list(GET LIB_SEMVER_LIST 0 LIB_SEMVER_MAJOR)
 list(GET LIB_SEMVER_LIST 1 LIB_SEMVER_MINOR)

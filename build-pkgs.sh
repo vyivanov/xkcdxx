@@ -50,6 +50,7 @@ fi
 
 for idx in "${!PKGS[@]}"; do
     pushd "${idx}" > /dev/null \
+ && printf "${VER}" > VERSION \
  && DEBFULLNAME='Vladimir Yu. Ivanov' \
     DEBEMAIL='inbox@vova-ivanov.info' \
     dch "${MSG}" --create --package="${PKGS[${idx}]}" --newversion="${VER}~${CODE}" --distribution="${DIST}" \

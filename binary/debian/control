@@ -4,8 +4,8 @@ Section: libdevel
 Priority: optional
 Build-Depends:
     debhelper,
+    git,
     cmake,
-    ninja-build,
     libssl-dev (>= 1.1.1),
 Standards-Version: 4.4.1
 Homepage: https://github.com/vyivanov/xkcdxx

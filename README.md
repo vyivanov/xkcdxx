@@ -1,5 +1,10 @@
 # xkcdxx
 
+![](https://img.shields.io/github/v/tag/vyivanov/xkcdxx?color=green&label=release)
+![](https://img.shields.io/badge/support-C-blue.svg)
+![](https://img.shields.io/badge/support-C++-blue.svg)
+![](https://img.shields.io/badge/support-Python3-blue.svg)
+
 This library could be used to bring funny [xkcd][1] web-comics to your applications.
 
 Like this:
@@ -14,8 +19,8 @@ Do you remember? [Live][2] example. The work was inspired by existing [Python][3
 
 ## Description
 
-There are no specific external dependencies except stuff in standards and popular [OpenSSL][4] (>= 1.1.1).
-Implemented both static and shared thread-safe libraries.
+There are no specific external dependencies except stuff in standards and popular [OpenSSL][4] (>= 1.1.1) library.
+Implemented both static and shared thread-safe variants.
 
 Supported interfaces:
 
@@ -32,7 +37,7 @@ Pre-built packages:
 
 ## Installation guide
 
-Binary packages are available from Canonical PPA:
+Ready packages are available from Canonical PPA:
 
 ```bash
 $ sudo add-apt-repository --yes --update ppa:vyivanov/xkcdxx

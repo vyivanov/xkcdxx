@@ -27,12 +27,12 @@ SOFTWARE.
 #include "xkcd.h"
 #include "xkcdxx.h"
 
-#include <stdint.h>
+#include <cstdint>
 
 #include <string>
 #include <memory>
 
-constexpr xkcd_comic XKCD_COMIC_NULL = static_cast<xkcd_comic>(0);
+constexpr xkcd_comic XKCD_COMIC_NULL = 0;
 
 namespace {
 

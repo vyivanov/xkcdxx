@@ -4,8 +4,8 @@
 
 int main() {
     try {
-        xkcdxx::Comic a{xkcdxx::Comic::Number::Random};
-        xkcdxx::Comic b{a};
+        const xkcdxx::Comic a{xkcdxx::Comic::Number::Random};
+        const xkcdxx::Comic b{a};
         std::cout << (a.number() == b.number()) << '\x20' << a.number() << '\n';
         std::cout << (a.date()   == b.date())   << '\x20' << a.date()   << '\n';
         std::cout << (a.url()    == b.url())    << '\x20' << a.url()    << '\n';

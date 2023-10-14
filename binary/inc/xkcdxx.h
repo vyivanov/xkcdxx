@@ -50,11 +50,11 @@ public:
     explicit Comic(std::uint32_t number);
     virtual ~Comic();
 public:
-    const std::uint32_t& number() const noexcept;
-    const std::time_t&   date()   const noexcept;
-    const std::string&   url()    const noexcept;
-    const std::string&   title()  const noexcept;
-    const std::string&   alt()    const noexcept;
+    [[nodiscard]] const std::uint32_t& number() const noexcept;
+    [[nodiscard]] const std::time_t&   date()   const noexcept;
+    [[nodiscard]] const std::string&   url()    const noexcept;
+    [[nodiscard]] const std::string&   title()  const noexcept;
+    [[nodiscard]] const std::string&   alt()    const noexcept;
 private:
     class Impl;
     const std::shared_ptr<const Comic::Impl> m_pimpl;

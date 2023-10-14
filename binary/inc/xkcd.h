@@ -37,7 +37,7 @@ extern "C" {
 #define API_XKCD __attribute__((visibility("default")))
 #endif
 
-typedef struct opaque{}* xkcd_comic;
+typedef uintptr_t xkcd_comic;
 
 API_XKCD xkcd_comic xkcd_comic_latest(void);
 API_XKCD xkcd_comic xkcd_comic_random(void);
